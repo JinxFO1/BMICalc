@@ -13,6 +13,7 @@ namespace BMICalc
 {
     public partial class Form1 : Form
     {
+        bool LoggedIn = false; 
         public Form1()
         {
             InitializeComponent();
@@ -23,6 +24,8 @@ namespace BMICalc
             //init
             float Weight = float.Parse(WeightTxt.Text);
             float Height = float.Parse(HeightTxt.Text);
+
+
 
 
             //input
@@ -52,17 +55,17 @@ namespace BMICalc
 
                 //file Output
 
-                try 
+                try
                 {
-                    StreamWriter writer = new StreamWriter(@"G:\HealthData.txt", true);
+                    StreamWriter writer = new StreamWriter(@"G:\HealthData"+Name.Text+".txt", true);
                     writer.WriteLine(DateTime.Now.ToString() + "," + bmi.ToString() + "," + cat);
                     writer.Close();
                 }
-                catch { 
+                catch {
                     MessageBox.Show("man put sumn not dumb in");
                 }
 
-               
+
 
 
 
@@ -94,6 +97,57 @@ namespace BMICalc
             for (int i = 0; i < 2; i++)
             {
                 e.Graphics.DrawLine(pen, bmiPoints[i], bmiPoints[i + 1]);
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object send, EventArgs e) 
+        {
+            //string filename = @"G:\HealthData";
+        }
+
+        private void Login_Click(object sender, EventArgs e)
+        {
+            if (Name.Text == "")
+            {
+                MessageBox.Show("Please Input A Name");
+            }
+            else
+            {
+                if (File.Exists(@"G:\HealthData" + Name.Text + ".txt"))
+                {
+                    tabcontrol1.SelectTab(1);
+                    LoggedIn = true;
+
+                }
+                else
+                {
+                    using (FileStream fs = File.Create(@"G:\HealthData" + Name.Text + ".txt")) ;
+                    tabcontrol1.SelectTab(1);
+                    LoggedIn = true;
+                }
+            }
+
+
+
+
+
+        }
+
+        private void tabcontrol1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabcontrol1.SelectedIndex == 1) ;
+            {
+                if (LoggedIn == false)
+                {
+                    tabcontrol1.SelectTab(0);
+                    MessageBox.Show("Please Log In");
+                }
+
             }
         }
     }
