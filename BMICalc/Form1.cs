@@ -112,6 +112,8 @@ namespace BMICalc
 
         private void Login_Click(object sender, EventArgs e)
         {
+            bool NameT,PassT = false;
+            
             if (NameLI.Text == "")
             {
                 MessageBox.Show("Please Input A Name");
@@ -120,7 +122,33 @@ namespace BMICalc
             {
                 MessageBox.Show("Please Input A Password");
             }
-            //if
+            if (File.Exists(@"G:\HealthData" + NameLI.Text + ".txt"))
+            {
+                char[] delims = new[] { '\r', '\n' };
+                string File = @"G:\HealthData" + NameLI.Text + ".txt";
+                string[] lines = File.Split(delims, StringSplitOptions.RemoveEmptyEntries);
+
+                string username = lines[0];
+                string password = lines[1];
+
+                NameT = (username == NameLI.Text);
+                
+                
+                
+                if (username == NameLI.Text)
+                {
+                    PassT = true;
+                }
+                if (PassT , NameT = true)
+                {
+                    tabcontrol1.SelectTab(1);
+                }
+
+              
+
+
+
+            }
         }
 
         private void tabcontrol1_SelectedIndexChanged(object sender, EventArgs e)
