@@ -39,13 +39,20 @@
             this.Login = new System.Windows.Forms.Button();
             this.Gender = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.DoB = new System.Windows.Forms.MonthCalendar();
             this.label4 = new System.Windows.Forms.Label();
-            this.Name = new System.Windows.Forms.TextBox();
+            this.NameLI = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.PasswordLI = new System.Windows.Forms.TextBox();
+            this.PasswordR = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NameR = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Register = new System.Windows.Forms.Button();
+            this.DoB = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabcontrol1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -116,12 +123,19 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage1.Controls.Add(this.DoB);
+            this.tabPage1.Controls.Add(this.Register);
+            this.tabPage1.Controls.Add(this.PasswordR);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.NameR);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.PasswordLI);
+            this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.Login);
             this.tabPage1.Controls.Add(this.Gender);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.DoB);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.Name);
+            this.tabPage1.Controls.Add(this.NameLI);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -129,10 +143,11 @@
             this.tabPage1.Size = new System.Drawing.Size(1094, 413);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "User";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(344, 142);
+            this.Login.Location = new System.Drawing.Point(23, 115);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(216, 50);
             this.Login.TabIndex = 13;
@@ -150,41 +165,35 @@
             "Female",
             "Other",
             "Prefer not to say"});
-            this.Gender.Location = new System.Drawing.Point(77, 297);
+            this.Gender.Location = new System.Drawing.Point(688, 135);
             this.Gender.Name = "Gender";
-            this.Gender.Size = new System.Drawing.Size(121, 21);
+            this.Gender.Size = new System.Drawing.Size(100, 21);
             this.Gender.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 297);
+            this.label5.Location = new System.Drawing.Point(631, 143);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Gender";
             // 
-            // DoB
-            // 
-            this.DoB.Location = new System.Drawing.Point(77, 94);
-            this.DoB.Name = "DoB";
-            this.DoB.TabIndex = 10;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 152);
+            this.label4.Location = new System.Drawing.Point(631, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "D.O.B";
             // 
-            // Name
+            // NameLI
             // 
-            this.Name.Location = new System.Drawing.Point(77, 40);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(100, 20);
-            this.Name.TabIndex = 8;
+            this.NameLI.Location = new System.Drawing.Point(77, 40);
+            this.NameLI.Name = "NameLI";
+            this.NameLI.Size = new System.Drawing.Size(100, 20);
+            this.NameLI.TabIndex = 8;
             // 
             // label3
             // 
@@ -232,6 +241,73 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Weight";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 66);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Password";
+            // 
+            // PasswordLI
+            // 
+            this.PasswordLI.Location = new System.Drawing.Point(77, 63);
+            this.PasswordLI.Name = "PasswordLI";
+            this.PasswordLI.PasswordChar = '*';
+            this.PasswordLI.Size = new System.Drawing.Size(100, 20);
+            this.PasswordLI.TabIndex = 15;
+            // 
+            // PasswordR
+            // 
+            this.PasswordR.Location = new System.Drawing.Point(688, 82);
+            this.PasswordR.Name = "PasswordR";
+            this.PasswordR.PasswordChar = '*';
+            this.PasswordR.Size = new System.Drawing.Size(100, 20);
+            this.PasswordR.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(631, 85);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Password";
+            // 
+            // NameR
+            // 
+            this.NameR.Location = new System.Drawing.Point(688, 59);
+            this.NameR.Name = "NameR";
+            this.NameR.Size = new System.Drawing.Size(100, 20);
+            this.NameR.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(631, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Name";
+            // 
+            // Register
+            // 
+            this.Register.Location = new System.Drawing.Point(688, 171);
+            this.Register.Name = "Register";
+            this.Register.Size = new System.Drawing.Size(187, 40);
+            this.Register.TabIndex = 20;
+            this.Register.Text = "Register";
+            this.Register.UseVisualStyleBackColor = true;
+            this.Register.Click += new System.EventHandler(this.Register_Click);
+            // 
+            // DoB
+            // 
+            this.DoB.Location = new System.Drawing.Point(688, 109);
+            this.DoB.Name = "DoB";
+            this.DoB.Size = new System.Drawing.Size(200, 20);
+            this.DoB.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,7 +315,7 @@
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(1113, 450);
             this.Controls.Add(this.tabcontrol1);
-            //this.Name = "Form1";
+            this.Name = "Form1";
             this.Text = "   Calc";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabcontrol1.ResumeLayout(false);
@@ -267,10 +343,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Gender;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MonthCalendar DoB;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox Name;
+        private System.Windows.Forms.TextBox NameLI;
         private System.Windows.Forms.Button Login;
+        private System.Windows.Forms.TextBox PasswordLI;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox PasswordR;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox NameR;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Register;
+        private System.Windows.Forms.DateTimePicker DoB;
     }
 }
 

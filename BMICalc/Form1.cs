@@ -57,7 +57,7 @@ namespace BMICalc
 
                 try
                 {
-                    StreamWriter writer = new StreamWriter(@"G:\HealthData"+Name.Text+".txt", true);
+                    StreamWriter writer = new StreamWriter(@"G:\HealthData"+NameLI.Text+".txt", true);
                     writer.WriteLine(DateTime.Now.ToString() + "," + bmi.ToString() + "," + cat);
                     writer.Close();
                 }
@@ -112,35 +112,20 @@ namespace BMICalc
 
         private void Login_Click(object sender, EventArgs e)
         {
-            if (Name.Text == "")
+            if (NameLI.Text == "")
             {
                 MessageBox.Show("Please Input A Name");
             }
-            else
+            if (PasswordLI.Text == "") 
             {
-                if (File.Exists(@"G:\HealthData" + Name.Text + ".txt"))
-                {
-                    tabcontrol1.SelectTab(1);
-                    LoggedIn = true;
-
-                }
-                else
-                {
-                    using (FileStream fs = File.Create(@"G:\HealthData" + Name.Text + ".txt")) ;
-                    tabcontrol1.SelectTab(1);
-                    LoggedIn = true;
-                }
+                MessageBox.Show("Please Input A Password");
             }
-
-
-
-
-
+            //if
         }
 
         private void tabcontrol1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabcontrol1.SelectedIndex == 1) ;
+            if (tabcontrol1.SelectedIndex == 1) 
             {
                 if (LoggedIn == false)
                 {
@@ -148,6 +133,39 @@ namespace BMICalc
                     MessageBox.Show("Please Log In");
                 }
 
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Register_Click(object sender, EventArgs e)
+        {
+            if (NameR.Text == "")
+            {
+                MessageBox.Show("Please Input A Name");
+            }
+            else
+            {
+                if (File.Exists(@"G:\HealthData" + NameR.Text + ".txt"))
+                {
+                    LoggedIn = true;
+                    MessageBox.Show("This user already exists, Log In");
+
+
+                }
+                else
+                {
+                    using (FileStream fs = File.Create(@"G:\HealthData" + NameR.Text + ".txt")) ;
+                    StreamWriter writer = new StreamWriter(@"G:\HealthData" + NameR.Text + ".txt", true);
+                    writer.WriteLine(  NameR.Text + "\r\n"  + PasswordR.Text + "\r\n"   + DoB.Value.ToString() + "\r\n"   + Gender.SelectedItem.ToString());
+                    writer.Close();
+                    MessageBox.Show("User Created");
+
+
+                }
             }
         }
     }
